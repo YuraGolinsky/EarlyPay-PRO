@@ -66,6 +66,16 @@ header p {
     height: 0;
 }
 
+#monthPayment,
+#totalPaid,
+#overpay,
+#percentPaid,
+#recExtra {
+    color: #FF5733;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
 .slider {
     position: absolute;
     cursor: pointer;
