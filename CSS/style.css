@@ -1,3 +1,7 @@
+/* ===============================
+   Базові стилі
+=============================== */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -5,20 +9,33 @@
     font-family: "Segoe UI", Arial, sans-serif;
 }
 
+html,
 body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
     background: #f4f5f9;
-    color: #222;
+    color: #1d1b1b;
     line-height: 1.5;
 }
 
+
+/* Основний контейнер */
+
 .wrap {
+    flex: 1 0 auto;
     max-width: 1100px;
     margin: 2rem auto;
     padding: 0 1rem;
 }
 
 
-/* Заголовок */
+/* ===============================
+   Заголовок
+=============================== */
 
 header {
     text-align: center;
@@ -29,16 +46,36 @@ header h1 {
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
-    color: #2b3a67;
+    color: #ffffff;
 }
 
 header p {
     font-size: 1rem;
-    color: #555;
+    color: #fffdfd;
 }
 
 
-/* iOS-тумблери */
+/* Світла тема (за замовчуванням) */
+
+body:not(.dark) header h1,
+body:not(.dark) header p {
+    color: #000000;
+    /* чорний текст для світлої теми */
+}
+
+
+/* Темна тема */
+
+body.dark header h1,
+body.dark header p {
+    color: #ffffff;
+    /* білий текст для темної теми */
+}
+
+
+/* ===============================
+   iOS-тумблери
+=============================== */
 
 .switchers {
     display: flex;
@@ -66,16 +103,6 @@ header p {
     height: 0;
 }
 
-#monthPayment,
-#totalPaid,
-#overpay,
-#percentPaid,
-#recExtra {
-    color: #FF5733;
-    font-weight: bold;
-    font-size: 1.2em;
-}
-
 .slider {
     position: absolute;
     cursor: pointer;
@@ -84,7 +111,7 @@ header p {
     right: 0;
     bottom: 0;
     background-color: #ccc;
-    transition: .4s;
+    transition: 0.4s;
     border-radius: 34px;
 }
 
@@ -96,7 +123,7 @@ header p {
     left: 3px;
     bottom: 3px;
     background-color: white;
-    transition: .4s;
+    transition: 0.4s;
     border-radius: 50%;
 }
 
@@ -109,7 +136,9 @@ header p {
 }
 
 
-/* Сітка */
+/* ===============================
+   Сітка та карти
+=============================== */
 
 .grid {
     display: grid;
@@ -125,7 +154,9 @@ header p {
 }
 
 
-/* Поля */
+/* ===============================
+   Вхідні поля
+=============================== */
 
 .inputs label {
     display: block;
@@ -149,7 +180,9 @@ header p {
 }
 
 
-/* Кнопка */
+/* ===============================
+   Кнопки
+=============================== */
 
 .btn {
     display: block;
@@ -168,25 +201,9 @@ header p {
 }
 
 
-/* Світла тема (за замовчуванням) */
-
-header h1,
-header p {
-    color: #000;
-    /* чорний текст */
-}
-
-
-/* Темна тема */
-
-body.dark header h1,
-body.dark header p {
-    color: #fff;
-    /* білий текст при темній темі */
-}
-
-
-/* Результати */
+/* ===============================
+   Результати
+=============================== */
 
 .summary {
     margin-top: 1.5rem;
@@ -207,8 +224,20 @@ body.dark header p {
     font-size: 0.9rem;
 }
 
+#monthPayment,
+#totalPaid,
+#overpay,
+#percentPaid,
+#recExtra {
+    color: #FF5733;
+    font-weight: bold;
+    font-size: 1.2em;
+}
 
-/* Таблиця */
+
+/* ===============================
+   Таблиця графіка
+=============================== */
 
 .table-scroll {
     max-height: 350px;
@@ -242,52 +271,17 @@ body.dark header p {
 }
 
 
-/* Темна тема */
-
-body.dark {
-    background: #1e1e1e;
-    color: #eee;
-}
-
-body.dark .card {
-    background: #2b2b2b;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-}
-
-body.dark .btn {
-    background: #4458aa;
-}
-
-body.dark #schedule thead {
-    background: #4458aa;
-}
-
-
-/* Адаптивність */
-
-@media (max-width: 768px) {
-    .grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-/* Світла тема */
+/* ===============================
+   Футер
+=============================== */
 
 footer {
+    flex-shrink: 0;
+    width: 100%;
     background-color: #ffffff;
     color: #131212;
     text-align: center;
     padding: 20px 10px;
-    margin-top: 25px;
-}
-
-footer p {
-    margin: 0px 0;
-}
-
-.social-links {
-    margin: 0px 0;
 }
 
 .social-links a {
@@ -306,49 +300,38 @@ footer p {
 }
 
 
-/* Темна тема */
+/* ===============================
+   Темна тема
+=============================== */
 
-body.dark footer {
-    background-color: #131212;
+body.dark {
+    background-color: #1e1e1e;
     color: #ffffff;
 }
 
-
-/* Світла тема */
-
-footer {
-    background-color: #ffffff;
-    color: #131212;
-    text-align: center;
-    padding: 20px 10px;
-    margin-top: 25px;
+body.dark label {
+    color: #ffffff;
 }
 
-footer p {
-    margin: 0px 0;
+body.dark input {
+    background-color: #2c2c2c;
+    color: #ffffff;
+    border: 1px solid #555;
 }
 
-.social-links {
-    margin: 0px 0;
+body.dark .btn {
+    background-color: #444;
+    color: #ffffff;
 }
 
-.social-links a {
-    display: inline-block;
-    margin: 0 4px;
-    transition: transform 0.2s;
+body.dark .card {
+    background-color: #2b2b2b;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
-.social-links a:hover {
-    transform: scale(1.2);
+body.dark #schedule thead {
+    background-color: #4458aa;
 }
-
-.social-icon {
-    width: 40px;
-    height: 40px;
-}
-
-
-/* Темна тема */
 
 body.dark footer {
     background-color: #131212;
@@ -357,4 +340,15 @@ body.dark footer {
 
 body.dark .social-links a img {
     filter: brightness(1) invert(1);
+}
+
+
+/* ===============================
+   Адаптивність
+=============================== */
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
 }
