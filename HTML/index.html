@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="uk">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EarlyPay PRO</title>
+
+    <!-- Favicon для вкладки браузера -->
+    <link rel="icon" href="/images/Logo-2.png" type="image/png">
+
+    <link rel="stylesheet" href="/CSS/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <div class="logo-header">
+                <img src="/images/Logo.png" alt="EarlyPay PRO" style="height:60px;">
+                <h1 id="title">EarlyPay PRO</h1>
+            </div>
+            <p id="subtitle">Калькулятор кредиту з достроковими платежами та графіками</p>
+
+            <div class="switchers">
+                <div class="switch-group">
+                    <span> 🔲/🔳</span>
+                    <label class="ios-switch">
+                        <input type="checkbox" id="themeToggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="switch-group">
+                    <span> 🇺🇦/🇺🇸 </span>
+
+                    <label class="ios-switch">
+                        <input type="checkbox" id="langToggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </header>
+
+        <div class="grid">
+            <div class="card">
+                <div class="inputs">
+                    <label for="amount">
+                        Сума кредиту (UAH)
+                        <input id="amount" type="number" value="22000">
+                    </label>
+
+                    <label for="months">
+                        Термін (міс.)
+                        <input id="months" type="number" value="24">
+                    </label>
+
+                    <label for="rate">
+                        Річна ставка (%)
+                        <input id="rate" type="number" value="12">
+                    </label>
+
+                    <label for="salary">
+                        Щомісячна зарплата (UAH)
+                        <input id="salary" type="number" value="30000">
+                    </label>
+
+                    <label for="expenses">
+                        Щомісячні витрати (UAH)
+                        <input id="expenses" type="number" value="15000">
+                    </label>
+
+                    <label for="extraPay">
+                        Бажана сума дострокового погашення (UAH)
+                        <input id="extraPay" type="number" value="22000">
+                    </label>
+
+                    <label for="extraParts">
+                        На скільки частин розбити
+                        <input id="extraParts" type="number" value="4" min="1">
+                    </label>
+                </div>
+
+                <button id="calcBtn" class="btn">Розрахувати</button>
+
+                <div class="summary" id="summary">
+                    <div class="stat">
+                        <div class="muted">Місячний платіж</div>
+                        <div id="monthPayment">—</div>
+                    </div>
+                    <div class="stat">
+                        <div class="muted">Всього сплатите</div>
+                        <div id="totalPaid">—</div>
+                    </div>
+                    <div class="stat">
+                        <div class="muted">Переплата (відсотки)</div>
+                        <div id="overpay">—</div>
+                    </div>
+                    <div class="stat">
+                        <div class="muted">% сплачено</div>
+                        <div id="percentPaid">—</div>
+                    </div>
+                    <div class="stat">
+                        <div class="muted">Рекомендований додатковий платіж</div>
+                        <div id="recExtra">—</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <canvas id="chart" height="260"></canvas>
+                <div class="table-scroll">
+                    <table id="schedule">
+                        <thead>
+                            <tr>
+                                <th>Міс.</th>
+                                <th>Платіж</th>
+                                <th>Процент</th>
+                                <th>Основний борг</th>
+                                <th>Залишок</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Скрипти -->
+    <script src="/JS/translate.js"></script>
+    <script src="/JS/script.js"></script>
+
+
+
+
+    <!-- Футер -->
+    <footer>
+        <div class="footer-content">
+
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/твій-профіль" target="_blank">
+                    <img src="/images/linkedin.png" alt="LinkedIn" class="social-icon">
+                </a>
+                <a href="https://www.instagram.com/твій-профіль" target="_blank">
+                    <img src="/images/instagram.png" alt="Instagram" class="social-icon">
+                </a>
+                <a href="https://t.me/твій_нікнейм" target="_blank">
+                    <img src="/images/telegram.png" alt="Telegram" class="social-icon">
+                </a>
+                <a href="https://github.com/твій-аккаунт" target="_blank">
+                    <img src="/images/github.png" alt="GitHub" class="social-icon">
+                </a>
+            </div>
+            <p>&copy; 2025 EarlyPay PRO</p>
+        </div>
+    </footer>
+
+
+
+
+
+
+</body>
+
+</html>
