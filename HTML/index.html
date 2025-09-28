@@ -5,16 +5,68 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>EarlyPay PRO</title>
-
-    <!-- Favicon для вкладки браузера -->
     <link rel="icon" href="/images/Logo-2.png" type="image/png">
-
     <link rel="stylesheet" href="/CSS/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <style>
+        /* --- Tooltip CSS --- */
+        
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+            width: 100%;
+        }
+        
+        .tooltip input {
+            width: 100%;
+            padding: 6px;
+            margin-top: 4px;
+            box-sizing: border-box;
+        }
+        
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 220px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 4px;
+            padding: 6px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -110px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 13px;
+        }
+        
+        .tooltip:hover .tooltiptext,
+        .tooltip input:focus+.tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            /* Стрілка внизу тултіпа */
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+        }
+    </style>
 </head>
 
 <body>
     <div class="wrap">
+        <!-- Header -->
         <header>
             <div class="logo-header">
                 <img src="/images/Logo.png" alt="EarlyPay PRO" style="height:60px;">
@@ -24,16 +76,14 @@
 
             <div class="switchers">
                 <div class="switch-group">
-                    <span> 🌙/☀️ </span>
+                    <span>🌙/☀️</span>
                     <label class="ios-switch">
                         <input type="checkbox" id="themeToggle">
                         <span class="slider"></span>
                     </label>
                 </div>
-
                 <div class="switch-group">
-                    <span> 🇺🇦/🇺🇸 </span>
-
+                    <span>🇺🇦/🇺🇸</span>
                     <label class="ios-switch">
                         <input type="checkbox" id="langToggle">
                         <span class="slider"></span>
@@ -42,42 +92,44 @@
             </div>
         </header>
 
+        <!-- Main Grid -->
         <div class="grid">
+            <!-- Input Card -->
             <div class="card">
                 <div class="inputs">
-                    <label for="amount">
-                        Сума кредиту (UAH)
+                    <label class="tooltip">Сума кредиту (UAH)
                         <input id="amount" type="number" value="22000">
+                        <span class="tooltiptext">Введіть суму кредиту, яку плануєте взяти</span>
                     </label>
 
-                    <label for="months">
-                        Термін (міс.)
+                    <label class="tooltip">Термін (міс.)
                         <input id="months" type="number" value="24">
+                        <span class="tooltiptext">Вкажіть кількість місяців для виплати кредиту</span>
                     </label>
 
-                    <label for="rate">
-                        Річна ставка (%)
+                    <label class="tooltip">Річна ставка (%)
                         <input id="rate" type="number" value="12">
+                        <span class="tooltiptext">Вкажіть відсоткову ставку по кредиту</span>
                     </label>
 
-                    <label for="salary">
-                        Щомісячна зарплата (UAH)
+                    <label class="tooltip">Щомісячна зарплата (UAH)
                         <input id="salary" type="number" value="30000">
+                        <span class="tooltiptext">Введіть вашу щомісячну зарплату</span>
                     </label>
 
-                    <label for="expenses">
-                        Щомісячні витрати (UAH)
+                    <label class="tooltip">Щомісячні витрати (UAH)
                         <input id="expenses" type="number" value="15000">
+                        <span class="tooltiptext">Сума витрат на місяць (комунальні, продукти тощо)</span>
                     </label>
 
-                    <label for="extraPay">
-                        Бажана сума дострокового погашення (UAH)
+                    <label class="tooltip">Бажана сума дострокового погашення (UAH)
                         <input id="extraPay" type="number" value="22000">
+                        <span class="tooltiptext">Вкажіть суму, яку хочете внести додатково для швидшого погашення</span>
                     </label>
 
-                    <label for="extraParts">
-                        На скільки частин розбити
+                    <label class="tooltip">На скільки частин розбити
                         <input id="extraParts" type="number" value="4" min="1">
+                        <span class="tooltiptext">Скільки разів розбити додатковий платіж</span>
                     </label>
                 </div>
 
@@ -107,6 +159,7 @@
                 </div>
             </div>
 
+            <!-- Chart Card -->
             <div class="card">
                 <canvas id="chart" height="260"></canvas>
                 <div class="table-scroll">
@@ -127,17 +180,13 @@
         </div>
     </div>
 
-    <!-- Скрипти -->
+    <!-- Scripts -->
     <script src="/JS/translate.js"></script>
     <script src="/JS/script.js"></script>
 
-
-
-
-    <!-- Футер -->
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
-
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/yura-holinskyi-315a96211/" target="_blank">
                     <img src="/images/linkedin.png" alt="LinkedIn" class="social-icon">
@@ -155,12 +204,6 @@
             <p>&copy; 2025 EarlyPay PRO</p>
         </div>
     </footer>
-
-
-
-
-
-
 </body>
 
 </html>
