@@ -20,6 +20,7 @@ body {
     background: #f4f5f9;
     color: #1d1b1b;
     line-height: 1.5;
+    transition: background 0.4s ease, color 0.4s ease;
 }
 
 
@@ -40,6 +41,7 @@ body {
 header {
     text-align: center;
     margin-bottom: 2rem;
+    animation: fadeInDown 0.8s ease;
 }
 
 header h1 {
@@ -47,20 +49,22 @@ header h1 {
     font-weight: 700;
     margin-bottom: 0.5rem;
     color: #ffffff;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
 }
 
 header p {
     font-size: 1rem;
     color: #fffdfd;
+    transition: color 0.3s ease;
 }
 
 
-/* Світла тема (за замовчуванням) */
+/* Світла тема */
 
 body:not(.dark) header h1,
 body:not(.dark) header p {
     color: #000000;
-    /* чорний текст для світлої теми */
 }
 
 
@@ -69,7 +73,6 @@ body:not(.dark) header p {
 body.dark header h1,
 body.dark header p {
     color: #ffffff;
-    /* білий текст для темної теми */
 }
 
 
@@ -82,12 +85,14 @@ body.dark header p {
     justify-content: center;
     gap: 2rem;
     margin-top: 1rem;
+    animation: fadeInUp 0.8s ease;
 }
 
 .switch-group {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    font-weight: 600;
 }
 
 .ios-switch {
@@ -144,6 +149,7 @@ body.dark header p {
     display: grid;
     gap: 1.5rem;
     grid-template-columns: 1fr 1fr;
+    animation: fadeIn 1s ease;
 }
 
 .card {
@@ -151,6 +157,12 @@ body.dark header p {
     padding: 1.5rem;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
 
@@ -163,6 +175,7 @@ body.dark header p {
     margin-bottom: 1rem;
     font-size: 0.95rem;
     color: #444;
+    transition: color 0.3s ease;
 }
 
 .inputs input {
@@ -172,32 +185,68 @@ body.dark header p {
     font-size: 1rem;
     border-radius: 6px;
     border: 1px solid #ccc;
+    transition: all 0.25s ease;
 }
 
 .inputs input:focus {
     outline: none;
     border-color: #2b3a67;
+    box-shadow: 0 0 8px rgba(43, 58, 103, 0.3);
+    transform: scale(1.02);
 }
 
 
 /* ===============================
-   Кнопки
+   Кнопки — з анімацією
 =============================== */
 
 .btn {
     display: block;
     width: 100%;
-    background: #2b3a67;
+    background: linear-gradient(135deg, #2b3a67, #4458aa);
     color: #fff;
     border: none;
-    padding: 0.7rem;
+    padding: 0.8rem;
     font-size: 1rem;
-    border-radius: 8px;
+    font-weight: 600;
+    border-radius: 10px;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(43, 58, 103, 0.3);
+    transition: all 0.3s ease;
 }
 
 .btn:hover {
-    background: #3e4f8a;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(43, 58, 103, 0.5);
+}
+
+
+/* Блиск хвилею */
+
+.btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.25);
+    transform: skewX(-25deg);
+    transition: all 0.7s ease;
+}
+
+.btn:hover::after {
+    left: 130%;
+}
+
+
+/* Натискання */
+
+.btn:active {
+    transform: scale(0.97);
+    box-shadow: 0 3px 10px rgba(43, 58, 103, 0.4);
 }
 
 
@@ -209,6 +258,7 @@ body.dark header p {
     margin-top: 1.5rem;
     display: grid;
     gap: 0.8rem;
+    animation: fadeIn 0.8s ease;
 }
 
 .stat {
@@ -217,6 +267,12 @@ body.dark header p {
     padding: 0.5rem 0.6rem;
     background: #f8f9fc;
     border-radius: 6px;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.stat:hover {
+    background: #eef1f8;
+    transform: translateY(-2px);
 }
 
 .stat .muted {
@@ -263,6 +319,11 @@ body.dark header p {
     padding: 0.5rem 0.7rem;
     text-align: right;
     border-bottom: 1px solid #eee;
+    transition: background 0.2s ease;
+}
+
+#schedule tr:hover td {
+    background: #f2f4fa;
 }
 
 #schedule th:first-child,
@@ -282,16 +343,18 @@ footer {
     color: #131212;
     text-align: center;
     padding: 20px 10px;
+    transition: background 0.4s ease, color 0.4s ease;
 }
 
 .social-links a {
     display: inline-block;
     margin: 0 4px;
-    transition: transform 0.2s;
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .social-links a:hover {
-    transform: scale(1.2);
+    transform: scale(1.25) rotate(8deg);
+    filter: brightness(1.2);
 }
 
 .social-icon {
@@ -320,7 +383,7 @@ body.dark input {
 }
 
 body.dark .btn {
-    background-color: #444;
+    background: linear-gradient(135deg, #555, #777);
     color: #ffffff;
 }
 
@@ -350,5 +413,46 @@ body.dark .social-links a img {
 @media (max-width: 768px) {
     .grid {
         grid-template-columns: 1fr;
+    }
+    .btn {
+        font-size: 1.1rem;
+    }
+}
+
+
+/* ===============================
+   Анімації
+=============================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
